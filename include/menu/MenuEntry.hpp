@@ -3,11 +3,11 @@
 
 #include <Arduino.h>
 
-#include "sensors/Sensor.hpp"
+#include "menu/Printable.hpp"
 
 class MenuEntry {
 public:
-    MenuEntry(String title, Sensor *sensor);
+    MenuEntry(String title, _Printable *object);
     void setNext(MenuEntry *entry);
     MenuEntry *getNext();
     void setPrevious(MenuEntry *entry);
@@ -17,7 +17,7 @@ public:
 
 private:
     String title;
-    Sensor *sensor = nullptr;
+    _Printable *object = nullptr;
     MenuEntry *next = nullptr;
     MenuEntry *previous = nullptr;
 };

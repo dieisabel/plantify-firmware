@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#include "sensors/Sensor.hpp"
 #include "sensors/LightSensor.hpp"
 #include "sensors/TemperatureSensor.hpp"
 #include "menu/Menu.hpp"

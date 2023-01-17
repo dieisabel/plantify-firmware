@@ -2,10 +2,10 @@
 
 #include <Arduino.h>
 
-#include "sensors/Sensor.hpp"
+#include "menu/Printable.hpp"
 
-MenuEntry::MenuEntry(String title, Sensor *sensor)
-    : title(title), sensor(sensor) {}
+MenuEntry::MenuEntry(String title, _Printable *object)
+    : title(title), object(object) {}
 
 void MenuEntry::setNext(MenuEntry *entry) {
     next = entry;
@@ -28,5 +28,5 @@ String MenuEntry::getFirstRow() {
 }
 
 String MenuEntry::getSecondRow() {
-    return sensor->toString();
+    return object->toString();
 }

@@ -4,13 +4,13 @@
 #include <Arduino.h>
 #include <BH1750.h>
 
-#include "sensors/Sensor.hpp"
+#include "menu/Printable.hpp"
 
-class LightSensor : public Sensor {
+class LightSensor : public _Printable {
 public:
     LightSensor(int address);
-    void init() override;
-    float readData() override;
+    void init();
+    float readData();
     String toString() override;
 
 private:

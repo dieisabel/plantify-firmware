@@ -4,13 +4,13 @@
 #include <Arduino.h>
 #include <DHT.h>
 
-#include "sensors/Sensor.hpp"
+#include "menu/Printable.hpp"
 
-class TemperatureSensor : public Sensor {
+class TemperatureSensor : public _Printable {
 public:
     TemperatureSensor(int pin);
-    void init() override;
-    float readData() override;
+    void init();
+    float readData();
     String toString() override;
 
 private:
