@@ -3,16 +3,21 @@
 
 #include "sensors/LightSensor.hpp"
 #include "sensors/TemperatureSensor.hpp"
+#include "sensors/MoistureSensor.hpp"
 #include "menu/Menu.hpp"
 #include "menu/MenuEntry.hpp"
 #include "io/Button.hpp"
 #include "config.hpp"
 
+void connectMenuEntries();
+
 TemperatureSensor temperatureSensor = TemperatureSensor(DHT_PIN);
 LightSensor lightSensor = LightSensor(BH1750_ADDRESS);
+MoistureSensor moistureSensor = MoistureSensor(HYDROMETER_RELAY_PIN, HYDROMETER_PIN, HYDROMETER_INTERVAL);
 Menu menu = Menu(LCD_ADDRESS, LCD_COLUMNS, LCD_ROWS);
 MenuEntry temperatureEntry = MenuEntry("Temperature", &temperatureSensor);
 MenuEntry lightEntry = MenuEntry("Light", &lightSensor);
+MenuEntry moistureEntry = MenuEntry("Soil Moisture", &moistureSensor);
 Button leftButton = Button(BUTTON_LEFT);
 Button rightButton = Button(BUTTON_RIGHT);
 
@@ -25,12 +30,19 @@ void setup() {
     Wire.begin(I2C_SDA, I2C_SCL);
     lightSensor.init();
     temperatureSensor.init();
-    temperatureEntry.setNext(&lightEntry);
-    lightEntry.setPrevious(&temperatureEntry);
+    moistureSensor.init();
+    connectMenuEntires();
     menu.setCurrent(&temperatureEntry);
     menu.init();
     leftButton.init();
     rightButton.init();
+}
+
+void connectMenuEntires() {
+    temperatureEntry.setNext(&lightEntry);
+    lightEntry.setPrevious(&temperatureEntry);
+    lightEntry.setNext(&moistureEntry);
+    moistureEntry.setPrevious(&lightEntry);
 }
 
 void loop() {
