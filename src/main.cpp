@@ -31,14 +31,14 @@ void setup() {
     lightSensor.init();
     temperatureSensor.init();
     moistureSensor.init();
-    connectMenuEntires();
+    connectMenuEntries();
     menu.setCurrent(&temperatureEntry);
     menu.init();
     leftButton.init();
     rightButton.init();
 }
 
-void connectMenuEntires() {
+void connectMenuEntries() {
     temperatureEntry.setNext(&lightEntry);
     lightEntry.setPrevious(&temperatureEntry);
     lightEntry.setNext(&moistureEntry);
