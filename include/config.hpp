@@ -18,4 +18,6 @@
 #define HYDROMETER_PIN A0
 #define HYDROMETER_INTERVAL 1000 * 60
 
+#include "secrets.hpp"
+
 #endif
