@@ -17,6 +17,7 @@
 #define HYDROMETER_RELAY_PIN D5
 #define HYDROMETER_PIN A0
 #define HYDROMETER_INTERVAL 1000 * 60
+#define SERVER_PORT 80
 
 #include "secrets.hpp"
 

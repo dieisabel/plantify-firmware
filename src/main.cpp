@@ -8,11 +8,14 @@
 #include "menu/MenuEntry.hpp"
 #include "io/Button.hpp"
 #include "web/WiFi.hpp"
+#include "web/WebServer.hpp"
+#include "web/controllers.hpp"
 #include "config.hpp"
 
 void connectMenuEntries();
 
 _WiFi wifi = _WiFi(WIFI_SSID, WIFI_PASSWORD);
+WebServer server = WebServer(SERVER_PORT);
 TemperatureSensor temperatureSensor = TemperatureSensor(DHT_PIN);
 LightSensor lightSensor = LightSensor(BH1750_ADDRESS);
 MoistureSensor moistureSensor = MoistureSensor(HYDROMETER_RELAY_PIN, HYDROMETER_PIN, HYDROMETER_INTERVAL);
@@ -40,6 +43,8 @@ void setup() {
     menu.init();
     leftButton.init();
     rightButton.init();
+    server.on("/sensors", sendSensorsData);
+    server.init();
 }
 
 void connectMenuEntries() {
@@ -58,5 +63,6 @@ void loop() {
         menu.next();
     }
     menu.print();
+    server.handleClient();
     delay(100);
 }
