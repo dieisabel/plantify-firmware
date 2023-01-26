@@ -10,8 +10,8 @@ void LightSensor::init() {
     sensor.begin(BH1750::Mode::CONTINUOUS_HIGH_RES_MODE, address);
 }
 
-float LightSensor::readData() {
-    return sensor.readLightLevel();
+int LightSensor::readData() {
+    return (int) sensor.readLightLevel();
 }
 
 String LightSensor::toString() {

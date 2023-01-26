@@ -10,7 +10,7 @@ class LightSensor : public _Printable {
 public:
     LightSensor(int address);
     void init();
-    float readData();
+    int readData();
     String toString() override;
 
 private:

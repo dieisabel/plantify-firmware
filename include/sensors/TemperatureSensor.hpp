@@ -10,7 +10,7 @@ class TemperatureSensor : public _Printable {
 public:
     TemperatureSensor(int pin);
     void init();
-    float readData();
+    int readData();
     String toString() override;
 
 private:

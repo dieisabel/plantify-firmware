@@ -10,7 +10,7 @@ void MoistureSensor::init() {
     pinMode(hydrometerPin, INPUT);
 }
 
-float MoistureSensor::readData() {
+int MoistureSensor::readData() {
     unsigned long currentTime = millis();
     if (currentTime - lastTime >= interval) {
         digitalWrite(relayPin, HIGH);

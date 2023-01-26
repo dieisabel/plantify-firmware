@@ -10,8 +10,8 @@ void TemperatureSensor::init() {
     sensor.begin();
 }
 
-float TemperatureSensor::readData() {
-    return sensor.readTemperature();
+int TemperatureSensor::readData() {
+    return (int) sensor.readTemperature();
 }
 
 String TemperatureSensor::toString() {

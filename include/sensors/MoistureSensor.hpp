@@ -9,13 +9,13 @@ class MoistureSensor : public _Printable {
 public:
     MoistureSensor(int relayPin, int hydrometerPin, int interval);
     void init();
-    float readData();
+    int readData();
     String toString() override;
 
 private:
     int relayPin;
     int hydrometerPin;
-    float data;
+    int data;
     unsigned long lastTime = 0;
     unsigned long interval;
 };
