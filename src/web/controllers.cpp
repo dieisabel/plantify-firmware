@@ -4,9 +4,9 @@
 #include <ArduinoJson.h>
 
 void sendSensorsData() {
-    float temperature = temperatureSensor.readData();
-    float light = lightSensor.readData();
-    float moisture = moistureSensor.readData();
+    int temperature = temperatureSensor.readData();
+    int light = lightSensor.readData();
+    int moisture = moistureSensor.readData();
     StaticJsonDocument<96> document;
     document["temperature"] = temperature;
     document["light"] = light;
